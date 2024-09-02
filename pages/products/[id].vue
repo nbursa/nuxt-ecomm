@@ -19,7 +19,8 @@
           product.price
         }}</span>
         <button
-          class="mt-4 px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark"
+          class="mt-4 px-6 py-2 bg-primary border border-black font-semibold rounded hover:bg-black hover:text-white"
+          @click="addToCart"
         >
           Buy Now
         </button>
@@ -31,13 +32,24 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+import { useCart } from "~/composables/useCart";
 import { products } from "~/data";
 import type { Product } from "~/types";
 
 const route = useRoute();
+const { addItem } = useCart();
 
 const product = computed<Product | undefined>(() => {
   const id = parseInt(route.params.id as string, 10);
   return products.find((p) => p.id === id);
 });
+
+const addToCart = () => {
+  if (product.value) {
+    addItem({
+      ...product.value,
+      quantity: 1,
+    });
+  }
+};
 </script>

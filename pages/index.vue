@@ -26,14 +26,15 @@
           <h2 class="text-xl font-semibold">{{ product.title }}</h2>
           <p class="text-gray-700 mt-2">{{ product.description }}</p>
           <div class="mt-4 flex justify-between items-center">
-            <span class="text-lg font-bold text-primary">{{
-              product.price
-            }}</span>
+            <span class="text-lg font-bold text-primary">
+              {{ product.price }}
+            </span>
             <NuxtLink
               :to="`/products/${product.id}`"
               class="text-secondary hover:underline"
-              >View Details</NuxtLink
             >
+              View Details
+            </NuxtLink>
           </div>
         </div>
       </NuxtLink>
@@ -45,14 +46,15 @@
 import { ref, computed } from "vue";
 import { products } from "~/data";
 import ProductSearch from "~/components/ProductSearch.vue";
+import type { Product } from "~/types";
 
 const categories = ["E-Books", "Templates", "Photos"];
 const minPrice = 10;
 const maxPrice = 100;
 
-const searchQuery = ref("");
-const selectedCategory = ref("");
-const selectedPrice = ref(maxPrice);
+const searchQuery = ref<string>("");
+const selectedCategory = ref<string>("");
+const selectedPrice = ref<number>(maxPrice);
 
 const applyFilters = (filters: {
   searchQuery: string;
@@ -64,13 +66,13 @@ const applyFilters = (filters: {
   selectedPrice.value = filters.selectedPrice;
 };
 
-const filteredProducts = computed(() => {
+const filteredProducts = computed<Product[]>(() => {
   return products.filter((product) => {
     const matchesSearchQuery = product.title
       .toLowerCase()
       .includes(searchQuery.value.toLowerCase());
     const matchesCategory = selectedCategory.value
-      ? product.description.includes(selectedCategory.value)
+      ? product.description?.includes(selectedCategory.value) ?? false
       : true;
     const matchesPrice =
       parseFloat(product.price.replace("$", "")) <= selectedPrice.value;
