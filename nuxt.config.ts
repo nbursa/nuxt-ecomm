@@ -15,4 +15,15 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2024-09-02",
+
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&family=Merriweather:wght@400;700&display=swap",
+        },
+      ],
+    },
+  },
 });

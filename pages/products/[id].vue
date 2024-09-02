@@ -1,0 +1,43 @@
+<template>
+  <div class="p-8">
+    <div class="flex flex-col md:flex-row">
+      <img
+        v-if="product"
+        :src="product.image"
+        alt="Product Image"
+        class="w-full md:w-1/2 h-auto object-cover rounded-lg shadow-md"
+      />
+
+      <div v-else>
+        <h1 class="text-2xl font-bold">Product not found</h1>
+      </div>
+
+      <div v-if="product" class="md:ml-8 mt-6 md:mt-0">
+        <h1 class="text-3xl font-bold">{{ product.title }}</h1>
+        <p class="text-gray-700 mt-4">{{ product.description }}</p>
+        <span class="text-xl font-bold text-primary mt-6 block">{{
+          product.price
+        }}</span>
+        <button
+          class="mt-4 px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark"
+        >
+          Buy Now
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import { products } from "~/data";
+import type { Product } from "~/types";
+
+const route = useRoute();
+
+const product = computed<Product | undefined>(() => {
+  const id = parseInt(route.params.id as string, 10);
+  return products.find((p) => p.id === id);
+});
+</script>

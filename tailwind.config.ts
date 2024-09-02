@@ -8,11 +8,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: "#1da1f2",
-        secondary: "#14171a",
-        accent: "#657786",
-      },
       fontFamily: {
         sans: ["Helvetica Neue", "Arial", "sans-serif"],
         serif: ["Merriweather", "serif"],
