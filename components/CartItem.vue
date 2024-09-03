@@ -14,7 +14,7 @@
           class="border border-gray-300 rounded w-16 text-center"
           @change="updateQuantity"
         />
-        <span class="ml-4 text-gray-600">${{ item.price }}</span>
+        <span class="ml-4 text-gray-600">{{ item.price }}</span>
       </div>
     </div>
     <button @click="removeItem" class="text-red-600 hover:underline">
