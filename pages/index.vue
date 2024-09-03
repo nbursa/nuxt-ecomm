@@ -9,35 +9,32 @@
       @update="applyFilters"
     />
 
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-      <NuxtLink
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 overflow-y-auto"
+    >
+      <div
         v-for="product in filteredProducts"
         :key="product.id"
-        :to="`/products/${product.id}`"
         class="border rounded-lg shadow-md overflow-hidden"
       >
-        <img
-          :src="product.image"
-          alt="Product Image"
-          class="w-full h-48 object-cover"
-        />
+        <NuxtLink :to="`/products/${product.id}`" class="block">
+          <img
+            :src="product.image"
+            alt="Product Image"
+            class="w-full h-48 object-cover"
+          />
 
-        <div class="p-4">
-          <h2 class="text-xl font-semibold">{{ product.title }}</h2>
-          <p class="text-gray-700 mt-2">{{ product.description }}</p>
-          <div class="mt-4 flex justify-between items-center">
-            <span class="text-lg font-bold text-primary">
-              {{ product.price }}
-            </span>
-            <NuxtLink
-              :to="`/products/${product.id}`"
-              class="text-secondary hover:underline"
-            >
-              View Details
-            </NuxtLink>
+          <div class="p-4">
+            <h2 class="text-xl font-semibold">{{ product.title }}</h2>
+            <p class="text-gray-700 mt-2">{{ product.description }}</p>
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-lg font-bold text-primary">{{
+                product.price
+              }}</span>
+            </div>
           </div>
-        </div>
-      </NuxtLink>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>

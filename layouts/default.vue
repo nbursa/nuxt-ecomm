@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
     <NavBar />
-    <main>
+    <main class="h-full flex-grow overflow-y-auto">
       <slot />
     </main>
   </div>
