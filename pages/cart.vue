@@ -26,4 +26,13 @@ import CartItem from "../components/CartItem.vue";
 import CartSummary from "../components/CartSummary.vue";
 
 const { cartItems, removeItem, updateItemQuantity, totalPrice } = useCart();
+
+useHead({
+  title: "Cart",
+  meta: [{ name: "description", content: "Cart page." }],
+  bodyAttrs: {
+    class: "cart",
+  },
+  script: [{ innerHTML: "console.log('Hello cart!')" }],
+});
 </script>

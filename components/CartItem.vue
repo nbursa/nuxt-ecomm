@@ -1,5 +1,8 @@
 <template>
-  <div class="flex items-center justify-between border-b pb-4 mb-4">
+  <NuxtLink
+    :to="`product/${item.id}`"
+    class="flex items-center justify-between border-b pb-4 mb-4"
+  >
     <img
       :src="item.image"
       alt="Product Image"
@@ -12,15 +15,16 @@
           type="number"
           v-model="quantity"
           class="border border-gray-300 rounded w-16 text-center"
-          @change="updateQuantity"
+          @change.prevent="updateQuantity"
+          @click.prevent="updateQuantity"
         />
         <span class="ml-4 text-gray-600">{{ item.price }}</span>
       </div>
     </div>
-    <button @click="removeItem" class="text-red-600 hover:underline">
+    <button @click.prevent="removeItem" class="text-red-600 hover:underline">
       Remove
     </button>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

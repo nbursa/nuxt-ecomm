@@ -18,12 +18,23 @@
         <span class="text-xl font-bold text-primary mt-6 block">{{
           product.price
         }}</span>
-        <button
-          class="mt-4 px-6 py-2 bg-primary border border-black font-semibold rounded hover:bg-black hover:text-white"
-          @click="addToCart"
-        >
-          Buy Now
-        </button>
+
+        <div class="flex gap-6">
+          <button
+            class="mt-4 px-6 py-2 bg-primary border border-black font-semibold rounded hover:bg-black hover:text-white"
+            @click="addToCart"
+          >
+            Add To Cart
+          </button>
+
+          <NuxtLink to="/cart">
+            <button
+              class="mt-4 px-6 py-2 bg-primary border border-black font-semibold rounded hover:bg-black hover:text-white"
+            >
+              View Cart
+            </button>
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
@@ -31,12 +42,14 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useCart } from "~/composables/useCart";
 import { products } from "~/data";
 import type { Product } from "~/types";
 
 const route = useRoute();
+const router = useRouter();
+
 const { addItem } = useCart();
 
 const product = computed<Product | undefined>(() => {
@@ -50,6 +63,21 @@ const addToCart = () => {
       ...product.value,
       quantity: 1,
     });
+
+    // router.push("/cart");
   }
 };
+
+useHead({
+  title: `Product ${product.value?.title}`,
+  meta: [
+    { name: "description", content: `Product ${product.value?.title} page.` },
+  ],
+  bodyAttrs: {
+    class: "product",
+  },
+  script: [
+    { innerHTML: `console.log("Hello ${product.value?.title} product!")` },
+  ],
+});
 </script>

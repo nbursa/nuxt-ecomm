@@ -17,7 +17,7 @@
         :key="product.id"
         class="border rounded-lg shadow-md overflow-hidden"
       >
-        <NuxtLink :to="`/products/${product.id}`" class="block">
+        <NuxtLink :to="`/product/${product.id}`" class="block">
           <img
             :src="product.image"
             alt="Product Image"
@@ -76,5 +76,14 @@ const filteredProducts = computed<Product[]>(() => {
 
     return matchesSearchQuery && matchesCategory && matchesPrice;
   });
+});
+
+useHead({
+  title: "Products",
+  meta: [{ name: "description", content: "Products page." }],
+  bodyAttrs: {
+    class: "products",
+  },
+  script: [{ innerHTML: "console.log('Hello products!')" }],
 });
 </script>
