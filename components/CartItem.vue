@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="`product/${item.id}`"
-    class="flex items-center justify-between border-b pb-4 mb-4"
+    class="flex items-center justify-between"
   >
     <img
       :src="item.image"

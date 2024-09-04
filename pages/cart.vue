@@ -1,8 +1,8 @@
 <template>
   <div class="p-8">
-    <h1 class="text-3xl font-bold mb-6">Your Shopping Cart</h1>
+    <h1 class="text-3xl text-center font-bold mb-6">Your Shopping Cart</h1>
 
-    <div v-if="cartItems.length > 0" class="grid grid-cols-1 gap-6 mb-8">
+    <div v-if="cartItems.length > 0" class="grid grid-cols-1 gap-6 mb-6">
       <CartItem
         v-for="item in cartItems"
         :key="item.id"
