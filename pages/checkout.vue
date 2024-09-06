@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 lg:max-w-6xl lg:mx-auto">
     <h1 class="text-3xl font-bold mb-6 text-center">Checkout</h1>
 
     <h2 class="text-2xl font-semibold mb-4">Billing Information</h2>

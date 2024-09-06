@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 lg:max-w-6xl lg:mx-auto">
     <div class="flex flex-col md:flex-row">
       <img
         v-if="product"

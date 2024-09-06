@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 lg:max-w-6xl lg:mx-auto">
     <h1 class="text-3xl text-center font-bold mb-6">Your Shopping Cart</h1>
 
     <div v-if="cartItems.length > 0" class="grid grid-cols-1 gap-6 mb-6">
